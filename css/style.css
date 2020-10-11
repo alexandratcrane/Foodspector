@@ -14,6 +14,7 @@ body {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  padding: 5px;
 }
 /* 
 .main .navbar {
@@ -214,12 +215,12 @@ input[type="submit"] {
 
 #submitContainer {
   margin: 0;
-  /* display: flex; */
-  flex-direction: revert;
+  display: flex;
+  flex-direction: column;
 }
 
 #submitInput {
-  margin-left: 25px;
+  margin: 25px;
 }
 
 /* For Roboto (Material Design) typography */
