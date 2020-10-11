@@ -230,12 +230,9 @@ function filterByAddress(addressInputted) {
 
 function menuFunction() {
     var menu = document.getElementById("hamMenu");
-    var arrow = document.getElementById("arrow");
     if (menu.style.display === "block") {
         menu.style.display = "none";
-        arrow.style.transform = "rotateZ(0deg)";
     } else {
         menu.style.display = "block";
-        arrow.style.transform = "rotateZ(90deg)";
     }
 }

@@ -11,9 +11,29 @@
 </head>
 <body>
 <div class="main">
+<<<<<<< HEAD
 
 
     <div class="info">
+=======
+   
+
+    <div class="info">
+        <div class="navbar">
+            <img class="img-circle logo" src="assets/logo-icon.png" alt="logo"/>
+        <!-- <ul>
+          <li>
+            <a href="#" class="active" onclick="loadJson()"
+              >Load Open Sourced Data</a
+            >
+          </li>
+          <li><a href="#" onclick="filterByName()">Filter by name</a></li>
+          <li><a href="#" onclick="filterByRisk()">FIlter by risk</a></li>
+          <li><a href="#" onclick="filterByZip()">FIlter by ZIP code</a></li>
+          <li><a href="#" onclick="filterByAddress()">FIlter by address</a></li>
+        </ul> -->
+    </div>
+>>>>>>> 87f5b93e0c490fb7f5e9832ce18ddf48a5aa4ed0
         <div class="head">
             <img class="img-circle logo" src="assets/logo-icon.png" alt="logo"/>
 
@@ -21,7 +41,24 @@
             <p>Inspect any restaurant</p>
         </div>
         <div  id="searchContainer">
+ 
+                <form id="f1" name="f1" class="search">
+                    <!-- <button id="hamButton" onclick="menuFunction()">
+                        <span id="arrow" class="iconify" data-inline="false" data-icon="ant-design:arrow-down-outlined" style="color: #000; font-size: 24px;"></span>
+                    </button> -->
+                    <input
+                            type="text"
+                            name="t1"
+                            placeholder="ENTER RESTAURANT"
+                            required=""
+                    />
+                </form>
+
+        </div>
+        <div id = "submitContainer" class ="submitDiv">
             <div class="hamMenuWrap">
+                <button id = "hamMenuButton" onclick="menuFunction()">Filter By...</button>
+    
                 <div id="hamMenu" class="hamMenu">
                     <div class="hamDivider">
                         <a class="hamLink active" href="#"  onclick="loadJson()">Load Open Sourced Data</a>
@@ -43,23 +80,11 @@
                     </div>
                 </div>
             </div>
-            <div id="submitContainer" >
-                <form id="f1" name="f1" class="search">
-                    <button id="hamButton" onclick="menuFunction()">
-                        <span id="arrow" class="iconify" data-inline="false" data-icon="ant-design:arrow-down-outlined" style="color: #000; font-size: 24px;"></span>
-                    </button>
-                    <input
-                            type="text"
-                            name="t1"
-                            placeholder="ENTER RESTAURANT"
-                            required=""
-                    />
-                </form>
-                <input id="submitInput" type="submit" name="b1" value="SEARCH" form="f1"/>
-            </div>
+            <input id="submitInput" type="submit" name="b1" value="SEARCH" form="f1"/>
         </div>
+        
     </div>
-</div>
+    
 <script src="main.js"></script>
 </body>
 </html>

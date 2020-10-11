@@ -212,6 +212,11 @@ input[type="submit"] {
   display: flex;
   flex-direction: row;
 }
+/* #searchContainer {
+  /* justify-content: center; */
+/* display: flex; */
+/* flex-direction: row; 
+}*/
 
 #submitContainer {
   margin: 0;
