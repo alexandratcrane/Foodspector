@@ -15,38 +15,18 @@
 
     <div class="info">
         <div class="head">
-            <img class="img-circle logo" src="assets/logo-icon.png" alt="logo"/>
+            <img class="img-circle logo" src="assets/logo2.png" alt="logo"/>
 
             <h1>FOODSPECTOR</h1>
             <p>Inspect any restaurant</p>
         </div>
         <div  id="searchContainer">
- 
-                <form id="f1" name="f1" class="search">
-                    <!-- <button id="hamButton" onclick="menuFunction()">
-                        <span id="arrow" class="iconify" data-inline="false" data-icon="ant-design:arrow-down-outlined" style="color: #000; font-size: 24px;"></span>
-                    </button> -->
-                    <input
-                            type="text"
-                            name="t1"
-                            placeholder="ENTER RESTAURANT"
-                            required=""
-                    />
-                </form>
-
-        </div>
-        <div id = "submitContainer" class ="submitDiv">
             <div class="hamMenuWrap">
-                <button id = "hamMenuButton" onclick="menuFunction()">Filter By...</button>
-    
                 <div id="hamMenu" class="hamMenu">
                     <div class="hamDivider">
                         <a class="hamLink active" href="#"  onclick="loadJson()">Load Open Sourced Data</a>
                     </div>
                     <div class="hamDivider" >
-                        <a class="hamLink" href="#" onclick="filterByName()">Filter by name</a>
-                    </div>
-                    <div class="hamDivider">
                         <a class="hamLink" href="#" onclick="filterByName()">Filter by name</a>
                     </div>
                     <div class="hamDivider">
@@ -60,11 +40,23 @@
                     </div>
                 </div>
             </div>
-            <input id="submitInput" type="submit" name="b1" value="SEARCH" form="f1"/>
+            <div id="submitContainer" >
+                <form id="f1" name="f1" class="search">
+                    <button id="hamButton" onclick="menuFunction()">
+                        <span id="arrow" class="iconify" data-inline="false" data-icon="ant-design:arrow-down-outlined" style="color: #000; font-size: 24px;"></span>
+                    </button>
+                    <input
+                            type="text"
+                            name="t1"
+                            placeholder="ENTER RESTAURANT"
+                            required=""
+                    />
+                </form>
+                <input id="submitInput" type="submit" name="b1" value="SEARCH" form="f1"/>
+            </div>
         </div>
-        
     </div>
-    
+</div>
 <script src="main.js"></script>
 </body>
 </html>
