@@ -108,6 +108,22 @@ h3 {
   padding: 10px 30px;
 }
 
+/* .list:first-child {
+  background-color: red;
+  text-emphasis: bold;
+} */
+
+.first-element {
+  display: flex;
+  justify-content: space-between;
+  min-width: 50px;
+  max-width: 450px;
+  width: 33%;
+  padding: 10px 30px;
+  background-color: steelblue;
+  color: white;
+  font-weight: bold;
+}
 .list-element:nth-child(odd) {
   background-color: lightblue;
 }
