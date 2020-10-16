@@ -15,16 +15,16 @@ body {
   justify-content: space-around;
   align-items: center;
 } */
-.main{
-	position: relative;
-	height:100vh;
-	width:100%;
+.main {
+  position: relative;
+  height: 100vh;
+  width: 100%;
   background: #97d3f1;
-	/* background:linear-gradient(rgba(255, 127, 80,0.6),rgba(235, 77, 75,0.5)),url("assets/pic1.png"); */
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-} 
+  /* background:linear-gradient(rgba(255, 127, 80,0.6),rgba(235, 77, 75,0.5)),url("assets/pic1.png"); */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 .main .navbar {
   position: absolute;
@@ -34,11 +34,11 @@ body {
 }
 
 .main .navbar .logo {
-  width: 15%; 
+  width: 15%;
   height: 9%;
   cursor: pointer;
-  text-align: center; 
-  float: left; 
+  text-align: center;
+  float: left;
 }
 
 .img-circle {
@@ -55,8 +55,8 @@ body {
 }
 
 .main .navbar ul li {
-   list-style-type: none; 
-   display: inline-block; 
+  list-style-type: none;
+  display: inline-block;
 }
 .main .navbar ul li a {
   position: relative;
@@ -104,7 +104,7 @@ body {
 }
 
 .main .info .head {
-  position: relative; 
+  position: relative;
   height: auto;
   width: 100%;
   text-align: center;
