@@ -63,8 +63,13 @@ function filterByName(nameInputted) {
             $where: "dba_name like '%" + name + "'"
         },
     }).done(function (data) {
+
         alert("Retrieved " + data.length + " records from the dataset!");
         for (let i = 0; i < data.length; i++) {
+            var div1 = document.createElement("div");
+            div1.className = "list-element";
+            div1.innerHTML = "<p>" + data[i]["dba_name"] + "</p>";
+            $("#loadIn").append(div1);
             console.log(
                 data[i]["dba_name"] +
                 " was inspected on " +
@@ -78,6 +83,7 @@ function filterByName(nameInputted) {
             // console.log(data[i]["inspection_date"]);
             // console.log(data[i]["results"]);
         }
+        // document.location.href = "./list.html";
     });
 }
 
