@@ -68,7 +68,18 @@ function filterByName(nameInputted) {
         for (let i = 0; i < data.length; i++) {
             var div1 = document.createElement("div");
             div1.className = "list-element";
-            div1.innerHTML = "<p>" + data[i]["dba_name"] + "</p>";
+
+            var left = document.createElement("div");
+            left.className = "left";
+
+            left.innerHTML = "<p>" + data[i]["dba_name"] + "</p>";
+
+            var middle = document.createElement("div");
+            middle.className = "middle";
+            middle.innerHTML = "<p>" + data[i]["results"] + "</p>";
+
+            div1.appendChild(left);
+            div1.appendChild(middle);
             $("#loadIn").append(div1);
             console.log(
                 data[i]["dba_name"] +
