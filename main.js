@@ -1,6 +1,7 @@
 var form = document.getElementById("f1");
-var input = ""
-form.onsubmit = function (event) {
+var input = "";
+// form.onsubmit = 
+function abc(event) {
     event.preventDefault();
     input = form.t1.value;
     console.log("Restaurant: " + input);
