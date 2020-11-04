@@ -1,9 +1,11 @@
 var form = document.getElementById("f1");
 var input = ""
 form.onsubmit = function (event) {
+    console.log("ENTERING")
     event.preventDefault();
     input = form.t1.value;
     console.log("Restaurant: " + input);
+    sessionStorage.setItem("search_query", input)
     /* For now, this just works with the submit form
       // filterByName(form.t1.value);
       // filterByRisk(form.t1.value);
