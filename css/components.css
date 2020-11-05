@@ -216,6 +216,7 @@ input[type="submit"] {
     padding: 0;
     /*width: 100%;*/
     /*margin-top: 200px;*/
+    /*background: white;*/
     align-items: center;
     justify-content: center;
 }
@@ -225,12 +226,13 @@ input[type="submit"] {
     /*position: static;*/
     /*width: 215px;*/
     padding-bottom: 10px;
-    margin: 25px;
+    margin: 10px;
     /*height: 80%;*/
 }
 .teamEmblemStar {
 
 }
+
 .teamEmblemTop {
     background-color: #C1E4F5;
     /*height: 200px;*/
@@ -238,6 +240,17 @@ input[type="submit"] {
 .teamEmblemMid {
     background-color: white;
 }
+.teamEnd {
+    padding-left: 0;
+    right: 0;
+    position: static;
+}
+
+#teamEndStar {
+    right: 0;
+}
+
+
 .teamEmblemStar {
     background-color: #FFFFFF;
 }
