@@ -1,10 +1,13 @@
 var form = document.getElementById("f1");
-var input = "";
+var input;
 // form.onsubmit = 
-function abc(event) {
+
+function submitFunc(event) {
+    console.log("ENTERING")
     event.preventDefault();
     input = form.t1.value;
     console.log("Restaurant: " + input);
+    sessionStorage.setItem("search_query", input)
     /* For now, this just works with the submit form
       // filterByName(form.t1.value);
       // filterByRisk(form.t1.value);
@@ -52,9 +55,15 @@ function filterByName(nameInputted) {
     } else {
         name = nameInputted.toUpperCase()
     }
+    sessionStorage.setItem("search_query", name)
+    console.log("Restaurant: " + name);
+
     /* All you need to do for a user inputted name is to convert the restaurant name into uppercase /*
 
      */
+
+
+
     $.ajax({
         url: "https://data.cityofchicago.org/resource/4ijn-s7e5.json",
         type: "GET",
@@ -66,6 +75,11 @@ function filterByName(nameInputted) {
     }).done(function (data) {
 
         alert("Retrieved " + data.length + " records from the dataset!");
+
+        document.location.href = "./list.html";
+        let searchQ = sessionStorage.getItem("search_query");
+        console.log(searchQ);
+        document.getElementById("loadIn2").innerHTML("<p>" + searchQ + "</p>");
         for (let i = 0; i < data.length; i++) {
             var div1 = document.createElement("div");
             div1.className = "list-element";
@@ -81,7 +95,7 @@ function filterByName(nameInputted) {
 
             div1.appendChild(left);
             div1.appendChild(middle);
-            $("#loadIn").append(div1);
+            $("#loadIn2").append(div1);
             console.log(
                 data[i]["dba_name"] +
                 " was inspected on " +
@@ -98,6 +112,7 @@ function filterByName(nameInputted) {
         // document.location.href = "./list.html";
     });
 }
+
 
 function filterByRisk(riskInputted) {
     let risk;
