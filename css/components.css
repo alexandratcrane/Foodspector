@@ -265,3 +265,199 @@ input[type="submit"] {
     font-size: 1em;
     text-align: center;
 }
+
+.list {
+    /* background-color: lightblue; */
+    /*width: 300px;*/
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    /* align-content: space-between; */
+}
+
+.list-element {
+    display: flex;
+    justify-content: space-between;
+    min-width: 50px;
+    max-width: 450px;
+    width: 33%;
+    padding: 10px 30px;
+}
+
+/* .list:first-child {
+  background-color: red;
+  text-emphasis: bold;
+} */
+
+.first-element {
+    display: flex;
+    justify-content: space-between;
+    min-width: 50px;
+    max-width: 450px;
+    width: 33%;
+    padding: 10px 30px;
+    background-color: steelblue;
+    color: white;
+    font-weight: bold;
+}
+.list-element:nth-child(odd) {
+    background-color: lightblue;
+}
+.list-element:nth-child(even) {
+    background-color: white;
+}
+.left {
+     margin: 0 5%;
+}
+
+.name {
+    color: black;
+     background-color: aliceblue;
+}
+.pass {
+    color: green;
+}
+.fail {
+    color: red;
+}
+
+
+
+
+
+/* Single Page Results */
+
+/* Main Result Card on top */
+#resultsMain {
+    margin: 0 auto;
+    background: rgba(230, 244, 251, 0.63);
+    padding-bottom: 15px;
+    box-shadow: 0px 24px 38px rgba(0, 0, 0, 0.14), 0px 9px 46px rgba(0, 0, 0, 0.12), 0px 11px 15px rgba(0, 0, 0, 0.2);
+}
+
+#resultMainCaption {
+    font-family: 'Big Shoulders', serif;
+    color: white;
+    font-size: 20px;
+}
+#resultsExplanation {
+    font-family: 'Big Shoulders', serif;
+    color: white;
+    font-size: 16px;
+}
+
+
+#mapIMG {
+    height: 200px;
+}
+/*Result cards */
+.resultsContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    left: 10px;
+    transform: translateX(10%);
+}
+.captionResults {
+    margin-left: 15%;
+    white-space: pre;
+    font-size: 1.2em;
+    color: #1A1A1A;
+    font-weight: bold;
+}
+.resultContainer {
+    display: flex;
+    /*width: 30%;*/
+    text-align: left;
+    margin-right: 20%;
+    font-family: 'Big Shoulders', sans-serif;
+    border-bottom: 1px dotted rgb(5, 5, 6);
+}
+.bodyResults {
+    margin-left: 20%;
+}
+
+.iconify {
+    color: #F12A00;
+    margin-top: 50%;
+}
+#PassVector {
+    height: 60px;
+    transform: translateY(20%);
+    /*display: inline-flex;*/
+}
+
+.violationContainer {
+    /*width: 25%;*/
+    /*margin: 25px auto;*/
+    /*height: 230px;*/
+    padding-bottom: 3px;
+    /*padding-top: 1px;*/
+    background: #FFFFFF;
+    box-shadow: 0px 24px 38px rgba(0, 0, 0, 0.14), 0px 9px 46px rgba(0, 0, 0, 0.12), 0px 11px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    display: none;
+    position: sticky;
+}
+.violationButton {
+    margin-right: 7%;
+    background: #FFA489;
+
+
+    height:36px;
+    width: 76px;
+}
+.previous {
+    margin-left: 5%;
+}
+.violationNumber {
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    font-style: normal;
+    font-weight: normal;
+    top: 5%;
+    font-size: 24px;
+    text-align: center;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+
+    letter-spacing: 0;
+
+    /* 00. On Surface / High Emphasis */
+
+    color: rgba(0, 0, 0, 0.87);
+}
+.violationButtonContainer {
+    flex-direction: row;
+    display: flex;
+    position: absolute;
+    margin-top: 40%;
+}
+
+.violationBody {
+    font-family: 'Roboto', sans-serif;
+    margin: 30px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: inherit;
+    /* or 143% */
+    letter-spacing: 0;
+
+    /* 00. On Surface / Medium Emphasis */
+
+    color: rgba(0, 0, 0, 0.6);
+}
+#main {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    /* background:linear-gradient(rgba(255, 127, 80,0.6),rgba(235, 77, 75,0.5)),url("assets/pic1.png"); */
+    background: #97d3f1 no-repeat center;
+    background-size: cover;
+}
+
+#violationPopUp {
+    display: none;
+}
