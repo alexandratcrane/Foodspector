@@ -7,6 +7,8 @@ let searchChosen = "name"; //default search
 function searchType(buttonType) {
     // console.log("Search Type Clicked");
     let buttonName = buttonType.name;
+    // console.log(buttonName);
+    // console.log(typeof buttonName);
     if (buttonName === "jsonLoader") {
         loadJson();
     }
@@ -30,10 +32,10 @@ function searchType(buttonType) {
 }
 
 function submitFunc() {
-    console.log("ENTERING")
+    // console.log(searchChosen);
     input = form.t1.value;
-    console.log("Restaurant: " + input);
-    sessionStorage.setItem("search_query", input)
+    // console.log("Restaurant: " + input);
+    // sessionStorage.setItem("search_query", input)
     if (searchChosen === "name") {
         filterByName(form.t1.value);
     }
@@ -123,11 +125,11 @@ function filterByName(nameInputted) {
             appendResult(data[0]);
         }
         else { // Alex's code, although you can easily use my jQuery code too, and it will look cooler IMO.
-            alert("You can also load each resturant's data on it's own, using Alex R's code, check the code comments (Line 100 of main.js) for the syntax!");
+            // alert("You can also load each resturant's data on it's own, using Alex R's code, check the code comments (Line 132 of main.js) for the syntax!");
             document.getElementById("results").innerHTML="<p>" + searchQ + "</p>";
             for (let i = 0; i < data.length; i++) {
-                appendResultList(data[i]);
-                // appendResult(data[i]);
+                // appendResultList(data[i]);
+                appendResult(data[i]);
                         //USE ^^^^^ FOR ALEX R's CODE
             }
         }
@@ -185,11 +187,11 @@ function filterByRisk(riskInputted) {
             appendResult(data[0]);
         }
         else { // Alex's code, although you can easily use my jQuery code too, and it will look cooler IMO.
-            alert("You can also load each resturant's data on it's own, using Alex R's code, check the code comments (Line 100 of main.js) for the syntax!");
+            alert("You can also load each resturant's data on it's own, using Alex R's code, check the code comments (Line 194 of main.js) for the syntax!");
             document.getElementById("results").innerHTML="<p>" + searchQ + "</p>";
             for (let i = 0; i < data.length; i++) {
-                appendResultList(data[i]);
-                // appendResult(data[i]);
+                // appendResultList(data[i]);
+                appendResult(data[i]);
                 //USE ^^^^^ FOR ALEX R's CODE
             }
         }
@@ -235,11 +237,11 @@ function filterByZip(zipInputted) {
             appendResult(data[0]);
         }
         else { // Alex's code, although you can easily use my jQuery code too, and it will look cooler IMO.
-            alert("You can also load each resturant's data on it's own, using Alex R's code, check the code comments (Line 100 of main.js) for the syntax!");
+            alert("You can also load each resturant's data on it's own, using Alex R's code, check the code comments (Line 242 of main.js) for the syntax!");
             document.getElementById("results").innerHTML="<p>" + searchQ + "</p>";
             for (let i = 0; i < data.length; i++) {
-                appendResultList(data[i]);
-                // appendResult(data[i]);
+                // appendResultList(data[i]);
+                appendResult(data[i]);
                 //USE ^^^^^ FOR ALEX R's CODE
             }
         }
@@ -287,11 +289,11 @@ function filterByAddress(addressInputted) {
             appendResult(data[0]);
         }
         else { // Alex's code, although you can easily use my jQuery code too, and it will look cooler IMO.
-            alert("You can also load each resturant's data on it's own, using Alex R's code, check the code comments (Line 100 of main.js) for the syntax!");
+            alert("You can also load each resturant's data on it's own, using Alex R's code, check the code comments (Line 295 of main.js) for the syntax!");
             document.getElementById("results").innerHTML="<p>" + searchQ + "</p>";
             for (let i = 0; i < data.length; i++) {
-                appendResultList(data[i]);
-                // appendResult(data[i]);
+                // appendResultList(data[i]);
+                appendResult(data[i]);
                 //USE ^^^^^ FOR ALEX R's CODE
             }
         }
