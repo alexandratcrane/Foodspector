@@ -1,3 +1,7 @@
 .vscode
+.cache
+.idea
+dist
 node_modules/
 .DS_Store
+config.js
