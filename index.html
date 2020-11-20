@@ -79,9 +79,9 @@
                                     <button name="jsonLoader"  type="button" class="hamLink active" onclick="searchType(this)">Load Open Sourced Data</button>
                                 </option>
 
-                                <option value="name" name = "nameFilter" onclick="searchType(this)">Filter by Name</option>
+                                <option value="name" name = "nameFilter" onClick="searchType(nameFilter)">Filter by Name</option>
                                 <option value="risk" name = "riskFilter" onclick="searchType(this)">Filter by Risk</option>
-                                <option value="zip" name = "zipFilter" onclick="searchType(this)">Filter by ZIP</option>
+                                <option value="zip"> <button name = "zipFilter" onclick="searchType(zipFilter)">Filter by ZIP</button></option>
                                 <option value="address" name = "addressFilter" onclick="searchType(this)"> Filter by Address </option>
                               </optgroup>
                             </select>

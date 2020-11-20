@@ -6,11 +6,11 @@ let searchChosen = "name"; //default search
 // form.onsubmit =
 
 
-function searchType(buttonType) {
+function searchType() {
     // this part of the code isn't working. whenever i use console for search chosen (line 38) it alwasy says its filtering by name
     // console.log("Search Type Clicked");
-    let buttonName = buttonType.name;
-    // console.log(buttonName);
+    let buttonName = name;
+    console.log("buttonname" + buttonName);
     // console.log(typeof buttonName);
     if (buttonName === "jsonLoader") {
         loadJson();
@@ -35,20 +35,23 @@ function searchType(buttonType) {
 }
 
 function submitFunc() {
-    console.log("search chosen " + searchChosen);
+    var selection = document.getElementById("filters");
+    var selectValue = selection.options[selection.selectedIndex].value;
+
+    console.log("search chosen " + selectValue);
     input = label.children[0].value;
-    console.log("Restaurant: " + input);
+    console.log("input: " + input);
     // sessionStorage.setItem("search_query", input)
-    if (searchChosen === "name") {
+    if (selectValue === "name") {
         filterByName(input);
     }
-    else if (searchChosen === "risk") {
+    else if (selectValue === "risk") {
         filterByRisk(input);
     }
-    else if (searchChosen === "zip") {
+    else if (selectValue === "zip") {
         filterByZip(input);
     }
-    else if (searchChosen === "address") {
+    else if (selectValue === "address") {
         filterByAddress(input);
     }
     else {
@@ -214,7 +217,7 @@ function filterByZip(zipInputted) {
     }
 
     zip = zip.trimEnd(); // For user error
-    console.log(zip);
+    console.log("zip code " + zip);
 
     try {
         $.ajax({
@@ -223,7 +226,7 @@ function filterByZip(zipInputted) {
             data: {
                 $limit: 5,
                 $$app_token: $$app_token,
-                $where: "zip '%" + zip + "'",
+                // $where: "zip '%" + zip + "'",
                 zip: zip,
             },
         }).done(function (data) {
