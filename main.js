@@ -2,37 +2,37 @@ let $$app_token = import('config');
 
 let label = document.getElementById("l1");
 let input;
-let searchChosen = "name"; //default search
+// let searchChosen = "name"; //default search
 // form.onsubmit =
 
 
-function searchType() {
-    // this part of the code isn't working. whenever i use console for search chosen (line 38) it alwasy says its filtering by name
-    // console.log("Search Type Clicked");
-    let buttonName = name;
-    console.log("buttonname" + buttonName);
-    // console.log(typeof buttonName);
-    if (buttonName === "jsonLoader") {
-        loadJson();
-    }
-    else if (buttonName === "nameFilter") {
-        searchChosen = "name";
-    }
+// function searchType() {
+//     // this part of the code isn't working. whenever i use console for search chosen (line 38) it alwasy says its filtering by name
+//     // console.log("Search Type Clicked");
+//     let buttonName = name;
+//     console.log("buttonname" + buttonName);
+//     // console.log(typeof buttonName);
+//     if (buttonName === "jsonLoader") {
+//         loadJson();
+//     }
+//     else if (buttonName === "nameFilter") {
+//         searchChosen = "name";
+//     }
 
-    else if (buttonName === "riskFilter") {
-        searchChosen = "risk";
-    }
-    else if (buttonName === "zipFilter") {
-        searchChosen = "zip";
-    }
+//     else if (buttonName === "riskFilter") {
+//         searchChosen = "risk";
+//     }
+//     else if (buttonName === "zipFilter") {
+//         searchChosen = "zip";
+//     }
 
-    else if (buttonName === "addressFilter") {
-        searchChosen = "address";
-    }
+//     else if (buttonName === "addressFilter") {
+//         searchChosen = "address";
+//     }
 
 
-    alert("You are searching/filter by " + searchChosen);
-}
+//     alert("You are searching/filter by " + searchChosen);
+// }
 
 function submitFunc() {
     var selection = document.getElementById("filters");
@@ -241,7 +241,7 @@ function filterByZip(zipInputted) {
             }
             else { // Alex's code, although you can easily use my jQuery code too, and it will look cooler IMO.
                 // alert("You can also load each resturant's data on it's own, using Alex R's code, check the code comments (Line 242 of main.js) for the syntax!");
-                document.getElementById("results").innerHTML = "<h2> Results for '" + searchQ + "':</h2>";
+                document.getElementById("results").innerHTML = "<h2> Results for '" + zip + "':</h2>";
                 for (let i = 0; i < data.length; i++) {
                     // appendResultList(data[i]);
                     appendResult(data[i]);
