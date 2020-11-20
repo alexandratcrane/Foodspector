@@ -491,7 +491,8 @@ input.fire-check:checked ~ section .tn-box:nth-child(3) .tn-progress {
   background-color: transparent;
   color: #fff;
   bottom: 0;
-  position: absolute;
+  /* position relative so that it stays on the bottom of info no matter how tall info is. */
+  position: relative;
 }
 
 #copyRight {
