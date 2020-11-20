@@ -41,7 +41,7 @@
             </div>
             <input type="checkbox" class="fire-check" />
 
-            <section>
+            <!-- <section>
 
                 <div class="tn-box tn-box-color-1">
                     <p>Click the arrow below for advanced search options!</p>
@@ -68,10 +68,32 @@
                             <button name="addressFilter"  type="button" class="hamLink" onclick="searchType(this)">Filter by address</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div id="submitContainer">
 <!--                    <form action="" id="f1" name="f1" class="search" onsubmit="submitFunc()">-->
                     <div class="search">
+                        <form class = "search">
+                            <select name="filters" id="filters">
+                              <optgroup label="Filters">
+                                <option class="searchOption" value="loadData">                            
+                                    <button name="jsonLoader"  type="button" class="hamLink active" onclick="searchType(this)">Load Open Sourced Data</button>
+                                </option>
+
+                                <option value="name" name = "nameFilter" onclick="searchType(this)">Filter by Name</option>
+                                <option value="risk">Filter by Risk</option>
+                                <option value="zip">Filter by ZIP</option>
+                                <option value="address"> Filter by Address </option>
+                              </optgroup>
+                            </select>
+                        
+                        
+                            <label id="l1">
+                                <input class = "search" type="text" name="t1" placeholder="ENTER RESTAURANT" required="" />
+                            </label>
+                    <button id="submitInput" type="button" name="b1" value="Search" onclick = "submitFunc()">Search</button>
+                </form>
+
+<!-- 
                         <button  type="button" id="hamButton" onclick="menuFunction()">
                             <span id="arrow" class="iconify" data-inline="false"
                                   data-icon="ant-design:arrow-down-outlined" style="color: #000; font-size: 24px;"></span>
@@ -79,19 +101,18 @@
                         <label id="l1">
                             <input type="text" name="t1" placeholder="ENTER RESTAURANT" required="" />
                         </label>
-                    </div>
-                    <!--                    </form>-->
-                    <button id="submitInput" type="button" name="b1" value="Search" onclick = "submitFunc()">Search</button>
-                </div>
-            </div>
+                    </div> -->
+                                  </form> 
+                    <!-- <button id="submitInput" type="button" name="b1" value="Search" onclick = "submitFunc()">Search</button> --> 
+                </div></div>
             <div id="results"></div>
-        </div>
-    </div>
-    <footer>
-        <a id="copyRight" href="https://github.com/emmaamobi/Foodspector/blob/master/LICENSE">
-            <p>© 2020 Alexander Rose, Alex Crane, Emmanuel Amobi, Jack Narwoski</p>
-        </a>
-    </footer>
+        <!-- </div> -->
+        <footer>
+            <a id="copyRight" href="https://github.com/emmaamobi/Foodspector/blob/master/LICENSE">
+                <p>© 2020 Alexander Rose, Alex Crane, Emmanuel Amobi, Jack Narwoski</p>
+            </a>
+        </footer>    </div>
+
     <script src="main.js"></script>
     <script>
         function menuFunction() {
