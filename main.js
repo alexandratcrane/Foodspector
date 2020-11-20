@@ -14,18 +14,18 @@ function searchType(buttonType) {
     if (buttonName === "jsonLoader") {
         loadJson();
     }
-    else if(buttonName === "nameFilter") {
+    else if (buttonName === "nameFilter") {
         searchChosen = "name";
     }
 
-    else if(buttonName === "riskFilter") {
+    else if (buttonName === "riskFilter") {
         searchChosen = "risk";
     }
-    else if(buttonName === "zipFilter") {
+    else if (buttonName === "zipFilter") {
         searchChosen = "zip";
     }
 
-    else if(buttonName === "addressFilter") {
+    else if (buttonName === "addressFilter") {
         searchChosen = "address";
     }
 
@@ -51,7 +51,7 @@ function submitFunc() {
         filterByAddress(input);
     }
     else {
-       alert("Error, invalid input! This is probably FoodSpector's fault!");
+        alert("Error, invalid input! This is probably FoodSpector's fault!");
     }
 }
 
@@ -125,11 +125,11 @@ function filterByName(nameInputted) {
         }
         else { // Alex's code, although you can easily use my jQuery code too, and it will look cooler IMO.
             // alert("You can also load each resturant's data on it's own, using Alex R's code, check the code comments (Line 132 of main.js) for the syntax!");
-            document.getElementById("results").innerHTML="<h2> Results for '" + searchQ + "':</h2>";
+            document.getElementById("results").innerHTML = "<h2> Results for '" + searchQ + "':</h2>";
             for (let i = 0; i < data.length; i++) {
                 // appendResultList(data[i]);
                 appendResult(data[i]);
-                        //USE ^^^^^ FOR ALEX R's CODE
+                //USE ^^^^^ FOR ALEX R's CODE
             }
         }
         // document.location.href = "./list.html";
@@ -187,7 +187,7 @@ function filterByRisk(riskInputted) {
         }
         else { // Alex's code, although you can easily use my jQuery code too, and it will look cooler IMO.
             // alert("You can also load each resturant's data on it's own, using Alex R's code, check the code comments (Line 194 of main.js) for the syntax!");
-            document.getElementById("results").innerHTML="<h2> Results for '" + searchQ + "':</h2>";
+            document.getElementById("results").innerHTML = "<h2> Results for '" + searchQ + "':</h2>";
             for (let i = 0; i < data.length; i++) {
                 // appendResultList(data[i]);
                 appendResult(data[i]);
@@ -225,7 +225,7 @@ function filterByZip(zipInputted) {
                 zip: zip,
             },
         }).done(function (data) {
-            // alert("Retrieved " + data.length + " records from the dataset!");
+            alert("Retrieved " + data.length + " records from the dataset!");
             // document.location.href = "./list.html";
             let searchQ = sessionStorage.getItem("search_query");
             console.log("search_query: " + searchQ);
@@ -236,7 +236,7 @@ function filterByZip(zipInputted) {
             }
             else { // Alex's code, although you can easily use my jQuery code too, and it will look cooler IMO.
                 // alert("You can also load each resturant's data on it's own, using Alex R's code, check the code comments (Line 242 of main.js) for the syntax!");
-                document.getElementById("results").innerHTML="<h2> Results for '" + searchQ + "':</h2>";
+                document.getElementById("results").innerHTML = "<h2> Results for '" + searchQ + "':</h2>";
                 for (let i = 0; i < data.length; i++) {
                     // appendResultList(data[i]);
                     appendResult(data[i]);
@@ -292,7 +292,7 @@ function filterByAddress(addressInputted) {
         }
         else { // Alex's code, although you can easily use my jQuery code too, and it will look cooler IMO.
             // alert("You can also load each resturant's data on it's own, using Alex R's code, check the code comments (Line 295 of main.js) for the syntax!");
-            document.getElementById("results").innerHTML="<h2> Results for '" + searchQ + "':</h2>";
+            document.getElementById("results").innerHTML = "<h2> Results for '" + searchQ + "':</h2>";
             for (let i = 0; i < data.length; i++) {
                 // appendResultList(data[i]);
                 appendResult(data[i]);
@@ -333,9 +333,9 @@ function appendResultList(data) {
 function appendResult(data) {
     let date = new Date(data["inspection_date"]);
     let year = date.getFullYear();
-    let month = date.getMonth()+1;
+    let month = date.getMonth() + 1;
     let dt = date.getDate();
-    let humanReadableDate = year+'-' + month + '-'+dt;
+    let humanReadableDate = year + '-' + month + '-' + dt;
     /* MAIN RESULTS PURE HTML
         <div id="resultsMain">
             <h1> <img src="assets/flat-color-icons_inspectionFail.svg" id="PassVector"/> La Unica <span id="passedOrFail">passed</span> the Inspection</h1>
@@ -356,7 +356,7 @@ function appendResult(data) {
     let resultMainCaptionStyling;
     let resultMainCaptionSVG;
 
-    if (data["results"].includes("Pass") === true || data["results"].includes("pass") === true ) {
+    if (data["results"].includes("Pass") === true || data["results"].includes("pass") === true) {
         resultMainCaptionStyling = "color: green;";
         resultMainCaptionSVG = "assets/flat-color-icons_inspection.svg";
     }
@@ -367,14 +367,14 @@ function appendResult(data) {
 
 
 
-    resultMainCaption.innerHTML = "<h1> <img src='" + resultMainCaptionSVG + "' id='PassVector'/>"+ data["dba_name"] + " Results: " + "<span style='" +resultMainCaptionStyling + "'>" + data["results"] + "</span></h1>" ;
+    resultMainCaption.innerHTML = "<h1> <img src='" + resultMainCaptionSVG + "' id='PassVector'/>" + data["dba_name"] + " Results: " + "<span style='" + resultMainCaptionStyling + "'>" + data["results"] + "</span></h1>";
 
 
     let longitude = data["longitude"];
-    console.log(data["dba_name"] + " longitude: "+ longitude);
+    console.log(data["dba_name"] + " longitude: " + longitude);
 
     let latitude = data["latitude"];
-    console.log(data["dba_name"] + " latitude: "+ latitude);
+    console.log(data["dba_name"] + " latitude: " + latitude);
 
     let resultMainMap = document.createElement("div");
     resultMainMap.className = "map";
@@ -397,7 +397,7 @@ function appendResult(data) {
     // });
 
 
-    resultMainMapScript.innerText = "var map = new ol.Map({target: '"+ resultMainMapID + "', layers: [new ol.layer.Tile({source: new ol.source.OSM()})], view: new ol.View({center: ol.proj.fromLonLat([" + longitude + "," + latitude + "]), zoom: 14})});"
+    resultMainMapScript.innerText = "var map = new ol.Map({target: '" + resultMainMapID + "', layers: [new ol.layer.Tile({source: new ol.source.OSM()})], view: new ol.View({center: ol.proj.fromLonLat([" + longitude + "," + latitude + "]), zoom: 14})});"
 
     console.log(resultMainMapScript.innerText);
 
@@ -415,7 +415,7 @@ function appendResult(data) {
     // resultMainImg.src = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic2.cbrimages.com%2Fwordpress%2Fwp-content%2Fuploads%2F2019%2F09%2FGarfieldheader.jpg&f=1&nofb=1';
 
     let resultMainBody = document.createElement("h4");
-    resultMainBody.id ="resultsExplanation";
+    resultMainBody.id = "resultsExplanation";
     // resultMainBody.innerText = data["dba_name"] + " Results :" + data["results"] + " Their inspection on " + humanReadableDate + ".";
 
 
@@ -472,7 +472,7 @@ function appendResult(data) {
 
     const inspectionTypeIconContainer = document.createElement("div");
     inspectionTypeIconContainer.className = "iconResults";
-    inspectionTypeIconContainer.innerHTML="<span class='iconify' data-inline='false' data-icon='mdi:form-select' style='color: #323A45; font-size: 64px;'></span>"
+    inspectionTypeIconContainer.innerHTML = "<span class='iconify' data-inline='false' data-icon='mdi:form-select' style='color: #323A45; font-size: 64px;'></span>"
 
     let inspection_type = data["inspection_type"];
 
@@ -501,13 +501,13 @@ function appendResult(data) {
     const inspectionTypeBodyResult = document.createElement("div");
     inspectionTypeBodyResult.className = "bodyResultsNeutral";
     let inspectionTypeBody = document.createElement("h3");
-    inspectionTypeBody.className ="bodySubtitleNeutral";
+    inspectionTypeBody.className = "bodySubtitleNeutral";
     inspectionTypeBody.innerText = "Inspection Type";
     let inspectionTypeSecondaryText = document.createElement("h3");
     inspectionTypeSecondaryText.className = "bodySecondaryTextNeutral";
     inspectionTypeSecondaryText.innerText = inspectionTypeText;
 
-    inspectionTypeBodyResult.append(inspectionTypeBody,inspectionTypeSecondaryText);
+    inspectionTypeBodyResult.append(inspectionTypeBody, inspectionTypeSecondaryText);
 
 
     const inspectionTypeCaptionResults = document.createElement("div");
@@ -519,7 +519,7 @@ function appendResult(data) {
     inspectionTypeCaptionResults.appendChild(inspectionTypeCaptionResultText);
 
 
-    inspectionTypeContainer.append(inspectionTypeIconContainer,inspectionTypeBodyResult, inspectionTypeCaptionResults);
+    inspectionTypeContainer.append(inspectionTypeIconContainer, inspectionTypeBodyResult, inspectionTypeCaptionResults);
 
 
     resultsContainer1.appendChild(inspectionTypeContainer);
@@ -545,19 +545,19 @@ function appendResult(data) {
 
     const inspectionDateIconContainer = document.createElement("div");
     inspectionDateIconContainer.className = "iconResults";
-    inspectionDateIconContainer.innerHTML="<span class='iconify' data-inline='false' data-icon='mdi:calendar-range' style='color: #323A45; font-size: 64px;'></span>"
+    inspectionDateIconContainer.innerHTML = "<span class='iconify' data-inline='false' data-icon='mdi:calendar-range' style='color: #323A45; font-size: 64px;'></span>"
 
 
     const inspectionDateBodyResult = document.createElement("div");
     inspectionDateBodyResult.className = "bodyResultsNeutral";
     let inspectionDateBody = document.createElement("h3");
-    inspectionDateBody.className ="bodySubtitleNeutral";
+    inspectionDateBody.className = "bodySubtitleNeutral";
     inspectionDateBody.innerText = "Inspection Date";
     let inspectionDateSecondaryText = document.createElement("h3");
     inspectionDateSecondaryText.className = "bodySecondaryTextNeutral";
     inspectionDateSecondaryText.innerText = "This restaurant was last inspected on " + humanReadableDate;
 
-    inspectionDateBodyResult.append(inspectionDateBody,inspectionDateSecondaryText);
+    inspectionDateBodyResult.append(inspectionDateBody, inspectionDateSecondaryText);
 
 
     const inspectionDateCaptionResults = document.createElement("div");
@@ -571,7 +571,7 @@ function appendResult(data) {
     inspectionDateCaptionResults.appendChild(inspectionDateCaptionResultText);
 
 
-    inspectionDateContainer.append(inspectionDateIconContainer,inspectionDateBodyResult, inspectionDateCaptionResults);
+    inspectionDateContainer.append(inspectionDateIconContainer, inspectionDateBodyResult, inspectionDateCaptionResults);
 
 
     resultsContainer1.appendChild(inspectionDateContainer);
@@ -600,7 +600,7 @@ function appendResult(data) {
     const inspectionRiskResult = document.createElement("div");
     inspectionRiskResult.className = "bodyResults";
     let inspectionRiskBody = document.createElement("h3");
-    inspectionRiskBody.className ="bodySubtitle";
+    inspectionRiskBody.className = "bodySubtitle";
     inspectionRiskBody.innerText = "Risk";
     let inspectionRiskSecondaryText = document.createElement("h3");
     inspectionRiskSecondaryText.className = "bodySecondaryText";
@@ -625,22 +625,22 @@ function appendResult(data) {
     const inspectionRiskIconContainer = document.createElement("div");
     inspectionRiskIconContainer.className = "iconResults";
 
-    if(riskValue === 3) {
-        inspectionRiskIconContainer.innerHTML="<span class='iconify' data-inline='false' data-icon='ri:alarm-warning-fill' style='color: #2e8540; font-size: 64px;'></span>"
+    if (riskValue === 3) {
+        inspectionRiskIconContainer.innerHTML = "<span class='iconify' data-inline='false' data-icon='ri:alarm-warning-fill' style='color: #2e8540; font-size: 64px;'></span>"
     }
-    else if(riskValue === 2) {
-        inspectionRiskIconContainer.innerHTML="<span class='iconify' data-inline='false' data-icon='ri:alarm-warning-fill' style='color: #F18200; font-size: 64px;'></span>"
+    else if (riskValue === 2) {
+        inspectionRiskIconContainer.innerHTML = "<span class='iconify' data-inline='false' data-icon='ri:alarm-warning-fill' style='color: #F18200; font-size: 64px;'></span>"
 
     }
-    else if(riskValue === 1) {
-        inspectionRiskIconContainer.innerHTML="<span class='iconify' data-inline='false' data-icon='ri:alarm-warning-fill' style='color: red; font-size: 64px;'></span>"
+    else if (riskValue === 1) {
+        inspectionRiskIconContainer.innerHTML = "<span class='iconify' data-inline='false' data-icon='ri:alarm-warning-fill' style='color: red; font-size: 64px;'></span>"
 
     }
 
 
     inspectionRiskSecondaryText.innerText = riskDescription;
 
-    inspectionRiskResult.append(inspectionRiskBody,inspectionRiskSecondaryText);
+    inspectionRiskResult.append(inspectionRiskBody, inspectionRiskSecondaryText);
 
     const inspectionRiskResults = document.createElement("div");
     inspectionRiskResults.className = "captionResults";
@@ -651,7 +651,7 @@ function appendResult(data) {
     inspectionRiskResults.appendChild(inspectionRiskCaptionResultText);
 
 
-    inspectionRiskContainer.append(inspectionRiskIconContainer,inspectionRiskResult, inspectionRiskResults);
+    inspectionRiskContainer.append(inspectionRiskIconContainer, inspectionRiskResult, inspectionRiskResults);
 
 
     resultsContainer2.appendChild(inspectionRiskContainer);
@@ -710,38 +710,38 @@ function appendResult(data) {
     const inspectionViolationIconContainer = document.createElement("div");
     inspectionViolationIconContainer.className = "iconResults";
 
-    if (violationDescription.includes("N/A, Out of Business") || violationDescription.includes("Not Ready") ){
-        inspectionViolationIconContainer.innerHTML="<span class='iconify' data-inline='false' data-icon='mdi:alert-octagram' style='font-size: 64px; color: #f18200;'></span>"
+    if (violationDescription.includes("N/A, Out of Business") || violationDescription.includes("Not Ready")) {
+        inspectionViolationIconContainer.innerHTML = "<span class='iconify' data-inline='false' data-icon='mdi:alert-octagram' style='font-size: 64px; color: #f18200;'></span>"
     }
-    else if (violationCount > 0 ) {
-        inspectionViolationIconContainer.innerHTML="<span class='iconify' data-inline='false' data-icon='mdi:alert-octagram' style='font-size: 64px;'></span>"
+    else if (violationCount > 0) {
+        inspectionViolationIconContainer.innerHTML = "<span class='iconify' data-inline='false' data-icon='mdi:alert-octagram' style='font-size: 64px;'></span>"
     }
     else {
-        inspectionViolationIconContainer.innerHTML="<span class='iconify' data-inline='false' data-icon='mdi:alert-octagram' style='font-size: 64px; color: #2e8540;'></span>"
+        inspectionViolationIconContainer.innerHTML = "<span class='iconify' data-inline='false' data-icon='mdi:alert-octagram' style='font-size: 64px; color: #2e8540;'></span>"
     }
 
 
     const inspectionViolationResult = document.createElement("div");
     inspectionViolationResult.className = "bodyResults";
-    let  inspectionViolationBody = document.createElement("h3");
-    inspectionViolationBody.className ="bodySubtitle";
+    let inspectionViolationBody = document.createElement("h3");
+    inspectionViolationBody.className = "bodySubtitle";
     // inspectionViolationBody.innerHTML = "Violations Received";
     let inspectionViolationSecondaryText = document.createElement("h3");
     inspectionViolationSecondaryText.className = "bodySecondaryText";
     inspectionViolationSecondaryText.innerText = violationDescription; // TODO create logic for this
 
-    inspectionViolationResult.append(inspectionViolationBody,inspectionViolationSecondaryText);
+    inspectionViolationResult.append(inspectionViolationBody, inspectionViolationSecondaryText);
 
-    const  inspectionViolationResults = document.createElement("div");
+    const inspectionViolationResults = document.createElement("div");
     inspectionViolationResults.className = "captionResults";
-    let  inspectionViolationCaptionResultText = document.createElement("p");
+    let inspectionViolationCaptionResultText = document.createElement("p");
     inspectionViolationCaptionResultText.className = "captionResultText";
     inspectionViolationCaptionResultText.innerText = violationCount + " violations." // TODO create logic for this
 
     inspectionViolationResults.appendChild(inspectionViolationCaptionResultText);
 
 
-    inspectionViolationContainer.append(inspectionViolationIconContainer,inspectionViolationResult, inspectionViolationResults);
+    inspectionViolationContainer.append(inspectionViolationIconContainer, inspectionViolationResult, inspectionViolationResults);
 
 
     resultsContainer2.appendChild(inspectionViolationContainer);
