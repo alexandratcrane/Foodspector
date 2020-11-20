@@ -7,6 +7,7 @@ let searchChosen = "name"; //default search
 
 
 function searchType(buttonType) {
+    // this part of the code isn't working. whenever i use console for search chosen (line 38) it alwasy says its filtering by name
     // console.log("Search Type Clicked");
     let buttonName = buttonType.name;
     // console.log(buttonName);
@@ -34,7 +35,7 @@ function searchType(buttonType) {
 }
 
 function submitFunc() {
-    // console.log(searchChosen);
+    console.log("search chosen " + searchChosen);
     input = label.children[0].value;
     console.log("Restaurant: " + input);
     // sessionStorage.setItem("search_query", input)
