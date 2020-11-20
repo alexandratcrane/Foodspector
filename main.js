@@ -222,6 +222,7 @@ function filterByZip(zipInputted) {
             data: {
                 $limit: 5,
                 $$app_token: $$app_token,
+                $where: "zip '%" + zip + "'",
                 zip: zip,
             },
         }).done(function (data) {

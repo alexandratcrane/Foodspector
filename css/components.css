@@ -534,7 +534,7 @@ input.fire-check:checked ~ section .tn-box:nth-child(3) .tn-progress {
   font-family: "Big Shoulders", sans-serif;
   /* background-color: #4ba9eb;
    */
-  border: 1px solid #4ba9eb;
+  /* border: 1px solid #4ba9eb; */
 }
 /* #searchContainer {
   justify-content: center;
