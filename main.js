@@ -72,7 +72,6 @@ function filterByParam(paramType,paramInputted){
         data_v = {
             $limit: 5,
             $$app_token: $$app_token,
-            //TODO: change this to work with name, need second parameter to differentiate, name, and Risk 
             $where: "dba_name like '%" + param_inp + "'"
         }
     }
@@ -81,7 +80,6 @@ function filterByParam(paramType,paramInputted){
         data_v = {
             $limit: 5,
             $$app_token: $$app_token,
-            //TODO: change this to work with name, need second parameter to differentiate, name, and Risk 
             param_inp: param_inp
         }
     }
