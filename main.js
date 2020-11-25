@@ -33,6 +33,94 @@ let input;
 //     alert("You are searching/filter by " + searchChosen);
 // }
 
+
+function filterByParam(paramType,paramInputted){
+    let param_inp;
+    let data_v;
+    /* Converts the correct input into the string, if we dont click submit */
+    if (typeof paramInputted != "string") {
+        param_inp = form.t1.value;
+        param_inp = param_inp.toUpperCase();
+    } else {
+        param_inp = paramInputted.toUpperCase();
+    }
+    param_inp = param_inp.trimEnd();
+    // sessionStorage.setItem("search_query", param_inp)
+    // console.log("Restaurant: " + param_inp);
+
+    // special handling for address string, don't know why the extra space being appended but that was in the function
+    if (paramType == "address"){param_inp = param_inp + ' '}
+    // Handle risks,risks type  
+    if (paramType == "risk"){
+        const highRisk = "1 (HIGH)"
+        const mediumRisk = "2 (MEDIUM)"
+        const lowRisk = "3 (LOW)"
+
+        if (highRisk.includes(risk)) {
+            risk = "Risk 1 (High)"
+        } else if (mediumRisk.includes(risk)) {
+            risk = "Risk 2 (Medium)"
+        } else if (lowRisk.includes(risk)) {
+            risk = "Risk 3 (Low)"
+        }
+    }
+
+    param_inp = param_inp.trimEnd(); // For user error
+    console.log("param_inp code " + param_inp);
+    // handle name, dba stuff
+    if (paramType == "name"){
+        data_v = {
+            $limit: 5,
+            $$app_token: $$app_token,
+            $where: "dba_name like '%" + param_inp + "'"
+        }
+    }
+    // treate data for risks,filter, and address same way
+    else {
+        data_v = {
+            $limit: 5,
+            $$app_token: $$app_token,
+            param_inp: param_inp
+        }
+    }
+
+    try {
+        $.ajax({
+            url: "https://data.cityofchicago.org/resource/4ijn-s7e5.json",
+            type: "GET",
+            data: data_v,
+        }).done(function (data) {
+            // alert("Retrieved " + data.length + " records from the dataset!");
+            // document.location.href = "./list.html";
+            // let searchQ = sessionStorage.getItem("search_query");
+            // console.log("search_query: " + searchQ);
+            console.log(data[0]);
+            let length = data.length;
+            if (length === 1) {
+                appendResult(data[0]);
+            }
+            else { // Alex's code, although you can easily use my jQuery code too, and it will look cooler IMO.
+                // alert("You can also load each resturant's data on it's own, using Alex R's code, check the code comments (Line 242 of main.js) for the syntax!");
+                document.getElementById("results").innerHTML = "<h2> Results for '" + param_inp + "':</h2>";
+                for (let i = 0; i < data.length; i++) {
+                    // appendResultList(data[i]);
+                    appendResult(data[i]);
+                    //USE ^^^^^ FOR ALEX R's CODE
+                }
+            }
+            // document.location.href = "./list.html";
+        });
+    }
+    catch (e) {
+        alert("Invalid Input!");
+    }
+
+}
+function filterByZip(zipInputted){ filterByParam("zip",zipInputted) }
+function filterByName(nameInputted){ filterByParam("name",nameInputted) }
+function filterByRisk(riskInputted){ filterByParam("risk",riskInputted) }
+function filterByAddress(addressInputted){ filterByParam("address",addressInputted) }
+
 function submitFunc() {
     var selection = document.getElementById("filters");
     var selectValue = selection.options[selection.selectedIndex].value;
