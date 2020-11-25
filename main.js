@@ -116,18 +116,11 @@ function filterByParam(paramType,paramInputted){
     }
 
 }
-function filterByZip(zipInputted){
-    filterByParam("zip",zipInputted)
-}
-function filterByName(zipInputted){
-    filterByParam("name",zipInputted)
-}
-function filterByRisk(zipInputted){
-    filterByParam("risk",zipInputted)
-}
-function filterByAddress(zipInputted){
-    filterByParam("address",zipInputted)
-}
+function filterByZip(zipInputted){ filterByParam("zip",zipInputted) }
+function filterByName(nameInputted){ filterByParam("name",nameInputted) }
+function filterByRisk(riskInputted){ filterByParam("risk",riskInputted) }
+function filterByAddress(addressInputted){ filterByParam("address",addressInputted) }
+
 function submitFunc() {
     var selection = document.getElementById("filters");
     var selectValue = selection.options[selection.selectedIndex].value;
