@@ -7,7 +7,6 @@ let input;
 
 
 // function searchType() {
-//     // this part of the code isn't working. whenever i use console for search chosen (line 38) it alwasy says its filtering by name
 //     // console.log("Search Type Clicked");
 //     let buttonName = name;
 //     console.log("buttonname" + buttonName);
@@ -33,6 +32,7 @@ let input;
 
 //     alert("You are searching/filter by " + searchChosen);
 // }
+
 
 function filterByParam(paramType,paramInputted){
     let param_inp;
@@ -176,6 +176,227 @@ function loadJson() {
         }
     });
 }
+
+function filterByName(nameInputted) {
+    let name;
+    /* Converts the correct input into the string, if we dont click submit */
+    if (typeof nameInputted != "string") {
+        name = form.t1.value;
+        name = name.toUpperCase();
+        name = name.trimEnd();
+    } else {
+        name = nameInputted.toUpperCase()
+    }
+    sessionStorage.setItem("search_query", name)
+    console.log("Restaurant: " + name);
+
+    /* All you need to do for a user inputted name is to convert the restaurant name into uppercase /*
+
+     */
+
+
+
+    $.ajax({
+        url: "https://data.cityofchicago.org/resource/4ijn-s7e5.json",
+        type: "GET",
+        data: {
+            $limit: 5,
+            $$app_token: $$app_token,
+            $where: "dba_name like '%" + name + "'"
+        },
+    }).done(function (data) {
+        // alert("Retrieved " + data.length + " records from the dataset!");
+        // document.location.href = "./list.html";
+        let searchQ = sessionStorage.getItem("search_query");
+        console.log("search_query: " + searchQ);
+        console.log(data[0]);
+        let length = data.length;
+        if (length === 1) {
+            appendResult(data[0]);
+        }
+        else { // Alex's code, although you can easily use my jQuery code too, and it will look cooler IMO.
+            // alert("You can also load each resturant's data on it's own, using Alex R's code, check the code comments (Line 132 of main.js) for the syntax!");
+            document.getElementById("results").innerHTML = "<h2> Results for '" + searchQ + "':</h2>";
+            for (let i = 0; i < data.length; i++) {
+                // appendResultList(data[i]);
+                appendResult(data[i]);
+                //USE ^^^^^ FOR ALEX R's CODE
+            }
+        }
+        // document.location.href = "./list.html";
+    });
+}
+
+function filterByRisk(riskInputted) {
+    let risk;
+    /* Converts the correct input into the string, if we dont click submit */
+    if (typeof riskInputted != "string") {
+        risk = form.t1.value;
+        risk = risk.toUpperCase();
+    } else {
+        risk = riskInputted.toUpperCase();
+    }
+
+    /* A risk can consist of three different values
+      1. risk: "Risk 1 (High)"
+      2. risk: "Risk 2 (Medium)"
+      3. risk: "Risk 3 (Low)"
+      Thus, we need to convert whatever the user inputs into one of these values.
+   */
+    const highRisk = "1 (HIGH)"
+    const mediumRisk = "2 (MEDIUM)"
+    const lowRisk = "3 (LOW)"
+
+    if (highRisk.includes(risk)) {
+        risk = "Risk 1 (High)"
+    } else if (mediumRisk.includes(risk)) {
+        risk = "Risk 2 (Medium)"
+    } else if (lowRisk.includes(risk)) {
+        risk = "Risk 3 (Low)"
+    }
+    // const risk = nameInputted.toUpperCase()
+    $.ajax({
+        url: "https://data.cityofchicago.org/resource/4ijn-s7e5.json",
+        type: "GET",
+        data: {
+            $limit: 5,
+            $$app_token: $$app_token,
+            risk: risk,
+        },
+    }).done(function (data) {
+
+
+
+        // alert("Retrieved " + data.length + " records from the dataset!");
+        // document.location.href = "./list.html";
+        let searchQ = sessionStorage.getItem("search_query");
+        console.log("search_query: " + searchQ);
+        console.log(data[0]);
+        let length = data.length;
+        if (length === 1) {
+            appendResult(data[0]);
+        }
+        else { // Alex's code, although you can easily use my jQuery code too, and it will look cooler IMO.
+            // alert("You can also load each resturant's data on it's own, using Alex R's code, check the code comments (Line 194 of main.js) for the syntax!");
+            document.getElementById("results").innerHTML = "<h2> Results for '" + searchQ + "':</h2>";
+            for (let i = 0; i < data.length; i++) {
+                // appendResultList(data[i]);
+                appendResult(data[i]);
+                //USE ^^^^^ FOR ALEX R's CODE
+            }
+        }
+        // document.location.href = "./list.html";
+    });
+}
+
+
+function filterByZip(zipInputted) {
+    /* All you need to do for this is convert the address to upper case,
+      // test int = 60655
+   */
+    let zip;
+    /* Converts the correct input into the string, if we dont click submit */
+    if (typeof zipInputted != "string") {
+        zip = form.t1.value;
+        zip = zip.toUpperCase();
+    } else {
+        zip = zipInputted.toUpperCase();
+    }
+
+    zip = zip.trimEnd(); // For user error
+    console.log("zip code " + zip);
+
+    try {
+        $.ajax({
+            url: "https://data.cityofchicago.org/resource/4ijn-s7e5.json",
+            type: "GET",
+            data: {
+                $limit: 5,
+                $$app_token: $$app_token,
+                // $where: "zip '%" + zip + "'",
+                zip: zip,
+            },
+        }).done(function (data) {
+            alert("Retrieved " + data.length + " records from the dataset!");
+            // document.location.href = "./list.html";
+            let searchQ = sessionStorage.getItem("search_query");
+            console.log("search_query: " + searchQ);
+            console.log(data[0]);
+            let length = data.length;
+            if (length === 1) {
+                appendResult(data[0]);
+            }
+            else { // Alex's code, although you can easily use my jQuery code too, and it will look cooler IMO.
+                // alert("You can also load each resturant's data on it's own, using Alex R's code, check the code comments (Line 242 of main.js) for the syntax!");
+                document.getElementById("results").innerHTML = "<h2> Results for '" + zip + "':</h2>";
+                for (let i = 0; i < data.length; i++) {
+                    // appendResultList(data[i]);
+                    appendResult(data[i]);
+                    //USE ^^^^^ FOR ALEX R's CODE
+                }
+            }
+            // document.location.href = "./list.html";
+        });
+    }
+    catch (e) {
+        alert("Invalid Input!");
+    }
+}
+
+
+function filterByAddress(addressInputted) {
+    /* All you need to do for this is convert the address to upper case and a space to the end, for socratas weird crap
+        test string = "4635 W 63RD ST"
+     */
+
+    let address;
+    /* Converts the correct input into the string, if we dont click submit */
+    if (typeof addressInputted != "string") {
+        address = form.t1.value;
+        address = address.toUpperCase();
+        address = address.trimEnd();
+        address = address + ' ';
+    } else {
+        address = addressInputted.toUpperCase();
+    }
+
+
+    address = address.trimEnd(); // For user error
+    address = address.toUpperCase() + ' ';
+    console.log(address);
+    $.ajax({
+        url: "https://data.cityofchicago.org/resource/4ijn-s7e5.json",
+        type: "GET",
+        data: {
+            $limit: 5,
+            $$app_token: $$app_token,
+            address: address, //you need to add a extra space.
+        },
+    }).done(function (data) {
+        // alert("Retrieved " + data.length + " records from the dataset!");
+        // document.location.href = "./list.html";
+        let searchQ = sessionStorage.getItem("search_query");
+        console.log("search_query: " + searchQ);
+        console.log(data[0]);
+        let length = data.length;
+        if (length === 1) {
+            appendResult(data[0]);
+        }
+        else { // Alex's code, although you can easily use my jQuery code too, and it will look cooler IMO.
+            // alert("You can also load each resturant's data on it's own, using Alex R's code, check the code comments (Line 295 of main.js) for the syntax!");
+            document.getElementById("results").innerHTML = "<h2> Results for '" + searchQ + "':</h2>";
+            appendResultList(data);
+            // for (let i = 0; i < data.length; i++) {
+            // appendResultList(data[i]);
+            // appendResult(data[i]);
+            //USE ^^^^^ FOR ALEX R's CODE
+        }
+    }
+        // document.location.href = "./list.html";
+    );
+}
+
+
 
 function appendResultList(data) {
     var div1 = document.createElement("div");
