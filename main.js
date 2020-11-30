@@ -34,7 +34,7 @@ let input;
 // }
 
 
-function filterByParam(paramType,paramInputted){
+function filterByParam(paramType, paramInputted) {
     let param_inp;
     let data_v;
     /* Converts the correct input into the string, if we dont click submit */
@@ -49,9 +49,9 @@ function filterByParam(paramType,paramInputted){
     // console.log("Restaurant: " + param_inp);
 
     // special handling for address string, don't know why the extra space being appended but that was in the function
-    if (paramType == "address"){param_inp = param_inp + ' '}
+    if (paramType == "address") { param_inp = param_inp + ' ' }
     // Handle risks,risks type  
-    if (paramType == "risk"){
+    if (paramType == "risk") {
         const highRisk = "1 (HIGH)"
         const mediumRisk = "2 (MEDIUM)"
         const lowRisk = "3 (LOW)"
@@ -68,7 +68,7 @@ function filterByParam(paramType,paramInputted){
     param_inp = param_inp.trimEnd(); // For user error
     console.log("param_inp code " + param_inp);
     // handle name, dba stuff
-    if (paramType == "name"){
+    if (paramType == "name") {
         data_v = {
             $limit: 5,
             $$app_token: $$app_token,
@@ -116,10 +116,10 @@ function filterByParam(paramType,paramInputted){
     }
 
 }
-function filterByZip(zipInputted){ filterByParam("zip",zipInputted) }
-function filterByName(nameInputted){ filterByParam("name",nameInputted) }
-function filterByRisk(riskInputted){ filterByParam("risk",riskInputted) }
-function filterByAddress(addressInputted){ filterByParam("address",addressInputted) }
+function filterByZip(zipInputted) { filterByParam("zip", zipInputted) }
+function filterByName(nameInputted) { filterByParam("name", nameInputted) }
+function filterByRisk(riskInputted) { filterByParam("risk", riskInputted) }
+function filterByAddress(addressInputted) { filterByParam("address", addressInputted) }
 
 function submitFunc() {
     var selection = document.getElementById("filters");
@@ -269,8 +269,8 @@ function filterByRisk(riskInputted) {
 
         // alert("Retrieved " + data.length + " records from the dataset!");
         // document.location.href = "./list.html";
-        let searchQ = sessionStorage.getItem("search_query");
-        console.log("search_query: " + searchQ);
+        // let searchQ = sessionStorage.getItem("search_query");
+        // console.log("search_query: " + searchQ);
         console.log(data[0]);
         let length = data.length;
         if (length === 1) {
@@ -278,7 +278,7 @@ function filterByRisk(riskInputted) {
         }
         else { // Alex's code, although you can easily use my jQuery code too, and it will look cooler IMO.
             // alert("You can also load each resturant's data on it's own, using Alex R's code, check the code comments (Line 194 of main.js) for the syntax!");
-            document.getElementById("results").innerHTML = "<h2> Results for '" + searchQ + "':</h2>";
+            document.getElementById("results").innerHTML = "<h2> Results for '" + risk + "':</h2>";
             for (let i = 0; i < data.length; i++) {
                 // appendResultList(data[i]);
                 appendResult(data[i]);
@@ -317,10 +317,10 @@ function filterByZip(zipInputted) {
                 zip: zip,
             },
         }).done(function (data) {
-            alert("Retrieved " + data.length + " records from the dataset!");
+            // alert("Retrieved " + data.length + " records from the dataset!");
             // document.location.href = "./list.html";
-            let searchQ = sessionStorage.getItem("search_query");
-            console.log("search_query: " + searchQ);
+            // let searchQ = sessionStorage.getItem("search_query");
+            // console.log("search_query: " + searchQ);
             console.log(data[0]);
             let length = data.length;
             if (length === 1) {
@@ -375,8 +375,8 @@ function filterByAddress(addressInputted) {
     }).done(function (data) {
         // alert("Retrieved " + data.length + " records from the dataset!");
         // document.location.href = "./list.html";
-        let searchQ = sessionStorage.getItem("search_query");
-        console.log("search_query: " + searchQ);
+        // let searchQ = sessionStorage.getItem("search_query");
+        // console.log("search_query: " + searchQ);
         console.log(data[0]);
         let length = data.length;
         if (length === 1) {
@@ -384,7 +384,7 @@ function filterByAddress(addressInputted) {
         }
         else { // Alex's code, although you can easily use my jQuery code too, and it will look cooler IMO.
             // alert("You can also load each resturant's data on it's own, using Alex R's code, check the code comments (Line 295 of main.js) for the syntax!");
-            document.getElementById("results").innerHTML = "<h2> Results for '" + searchQ + "':</h2>";
+            document.getElementById("results").innerHTML = "<h2> Results for '" + address + "':</h2>";
             appendResultList(data);
             // for (let i = 0; i < data.length; i++) {
             // appendResultList(data[i]);
