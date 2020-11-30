@@ -673,6 +673,15 @@ input.fire-check:checked ~ section .tn-box:nth-child(3) .tn-progress {
   text-emphasis: bold;
 } */
 
+#results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#loadIn2 {
+  margin: auto 0;
+}
+
 .first-element {
   display: flex;
   justify-content: space-between;
