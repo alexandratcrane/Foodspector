@@ -871,10 +871,12 @@ function appendResult(data) {
     resultsContainer2.appendChild(inspectionViolationContainer);
 
 
+    var resultsWrapper = document.createElement("div");
+    resultsWrapper.className = "resultsWrapper";
+    resultsWrapper.append(resultMain, resultsContainer1, resultsContainer2);
 
 
-
-    $("#results").append(resultMain, resultsContainer1, resultsContainer2);
+    $("#results").append(resultsWrapper);
     console.log(
         data["dba_name"] +
         " was inspected on " +

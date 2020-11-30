@@ -594,6 +594,13 @@ input.fire-check:checked ~ section .tn-box:nth-child(3) .tn-progress {
   }
 }
 
+.resultsWrapper {
+  width: 1500px;
+  border: 2px solid black;
+  padding: 5px;
+  margin-bottom: 15px;
+}
+
 /* Team Emblem Component */
 .teamEmblemContainer {
   /* Auto Layout */
